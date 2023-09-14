@@ -1,24 +1,25 @@
 // src/components/MovieDetails.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const MovieDetails = ({ match }) => {
+const MovieDetails = () => {
+  const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   
 
   useEffect(() => {
     
     const fetchMovieDetails = async () => {
-      const movieId = match.params.movieId;
+      
       const apiKey = '17b578c47751c844076a9dec1c6816a0'; // Replace with your API key
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/157336?api_key=17b578c47751c844076a9dec1c6816a0`);
       setMovie(response.data);
     };
 
     fetchMovieDetails();
-  }, [match.params.movieId]);
+  }, [movieId]);
 
   return (
     <div>
