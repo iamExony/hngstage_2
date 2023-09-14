@@ -1,29 +1,44 @@
-import React from 'react'
+// src/components/MovieList.js
 
-export default function MovieList(props) {
-    const boxes = props.movies.map(
-        (item,index) => {
-            return <Box key={index} image={item?.poster_path}  date= {item?.release_date} title={item?.title} rating={item?.vote_average} />
-        }
-    )
-    return (
-        <div className='w-full grid md:grid-cols-4 gap-5'>
-            {boxes}
-        </div>
-    )
-}
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
+const MovieList = () => {
+  const [top10Movies, setTop10Movies] = useState([]);
 
-const Box = (props) => {
-    const IMGPATH = "https://image.tmdb.org/t/p/w1280";
-    return (
-        <div className='shadow min-h-[200px] mt-3 pb-1 '>
-            <img src={IMGPATH + props.image} alt="" className='w-full' />
-            <div className='flex justify-between px-2 items-center'>
-                <span className='text-2xl text-yellow-500 font-bold'>{props.date}</span>
-                <span className='text-2xl text-yellow-500 font-bold'>{props.title}</span>
-                <span className='text-xl text-yellow-500 font-bold'>{props.rating}</span>
-            </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    const fetchTop10Movies = async () => {
+      const apiKey = '17b578c47751c844076a9dec1c6816a0'; // API key
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`
+      );
+      setTop10Movies(response.data.results.slice(0, 10));
+    };
+
+    fetchTop10Movies();
+  }, []);
+
+  return (
+    <div>
+      <h1>Top 10 Movies</h1>
+      <div className="movie-grid">
+        {top10Movies.map((movie) => (
+          <div className="movie-card" key={movie.id} data-testid="movie-card">
+            <Link to={`/movie/${movie.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                alt={movie.title}
+                data-testid="movie-poster"
+              />
+              <h2 data-testid="movie-title">{movie.title}</h2>
+              <p data-testid="movie-release-date">Release Date: {movie.release_date}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default MovieList;
