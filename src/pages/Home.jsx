@@ -6,7 +6,7 @@ const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.d
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=17b578c47751c844076a9dec1c6816a0&query=";
 
 function Home() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([1, 2, 3, 4]);
   const [search, setSearch] = useState("");
 
   const changeTheSearch = (event) => {
@@ -19,7 +19,7 @@ function Home() {
       .then(
         (response) => {
           console.log(response.data.results)
-          setMovies(response.data.results);
+          setMovies(response.data.results.slice(0, 10));
         }
       )
       .catch(
@@ -30,7 +30,7 @@ function Home() {
   }
 
   const getSearchedMovies = () => {
-    // console.log(SEARCHAPI + search)
+     console.log(SEARCHAPI + search)
     axios.get(
       SEARCHAPI + search
     )
