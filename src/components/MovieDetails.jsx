@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=17b578c47751c844076a9dec1c6816a0&page=1";
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=17b578c47751c844076a9dec1c6816a0&query=";
 
-function Home() {
+function MovieDetails() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -75,4 +75,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MovieDetails;

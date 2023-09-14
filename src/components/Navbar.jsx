@@ -1,9 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  // console.log(user.email)
 
   return (
     <div className="mw-64">
@@ -19,7 +17,7 @@ const Navbar = () => {
       <div>
           <div className="flex">
           <button className="text-white pr-4">Sign In</button>
-          <img className="cursor-pointer text-white" src="Menu.png" />
+          <img className="cursor-pointer text-white" src="Menu.png"  alt="Menue"/>
       </div>
     </div>
     </div>
