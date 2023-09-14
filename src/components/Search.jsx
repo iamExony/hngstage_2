@@ -46,7 +46,6 @@ const SearchMovies = ({setMode,setMovie,setIsLoading}) => {
 
   return (
     <div className='text-black'>
-      <h1>Search Movies</h1>
       <input
         type="text"
         placeholder="Search by title"

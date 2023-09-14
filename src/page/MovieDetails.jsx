@@ -31,7 +31,7 @@ const MovieDetails = () => {
       {' '}
       {/* Apply Tailwind container class */}
       {movieDetails ? (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center text-black">
           <img
             src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
             alt={movieDetails.title}

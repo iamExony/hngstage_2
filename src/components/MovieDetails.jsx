@@ -20,12 +20,11 @@ const MovieDetails = () => {
 
     fetchMovieDetails();
   }, [movieId]);
-
   return (
     <div>
       {movie ? (
-        <div className='text-white'>
-          <h2>{movie.title}</h2>
+        <div className='text-black'>
+          <h2 className='text-black'>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
           <p>Overview: {movie.overview}</p>
           <p>Rating: {movie.vote_average}</p>
