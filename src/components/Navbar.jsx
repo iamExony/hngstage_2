@@ -5,10 +5,10 @@ import React from 'react';
 
 const NavBar = ({setMode,setMovie,setIsLoading}) => {
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="bg-transparent p-4 absolute z-[100] inset-0">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-white font-semibold text-xl">Your Logo</div>
+        <div className="text-white font-semibold text-xl text-red-600">MovieBox</div>
         
         {/* Search Bar */}
         <Search setMode={setMode} setMovie={setMovie} setIsLoading={setIsLoading}/>
@@ -18,9 +18,7 @@ const NavBar = ({setMode,setMovie,setIsLoading}) => {
 
         {/* Menu */}
         <div className="hidden md:flex space-x-4">
-          <a href="/" className="text-white">Home</a>
-          <a href="/movies" className="text-white">Movies</a>
-          <a href="/tv-shows" className="text-white">TV Shows</a>
+          <a href="/" className="text-white">Menu</a>
           {/* Add more menu items as needed */}
         </div>
       </div>
