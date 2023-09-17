@@ -3,6 +3,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -20,6 +21,11 @@ const MovieDetails = () => {
 
     fetchMovieDetails();
   }, [movieId]);
+
+  if (error) {
+    return <ErrorPage />; // Render the ErrorPage component
+  }
+
   return (
     <div>
       {movie ? (

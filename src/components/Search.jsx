@@ -47,7 +47,7 @@ const SearchMovies = ({setMode,setMovie,setIsLoading}) => {
   return (
     <div className='text-black'>
       <input
-      className='rounded-full w-96 bg-transparent border-white placeholder:text-white'
+      className='rounded-md w-96 bg-transparent border-white placeholder:text-white'
         type="text"
         placeholder="What movie do you want to watch?"
         value={query}
